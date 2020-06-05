@@ -10,11 +10,11 @@ public class VegetablePO {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "NAME", unique = true)
-    private String name;
+    @Column(name = "NAME", unique = true, nullable = false)
+    private String vegetableName;
 
     @Column(name = "DESCRIPTION")
-    private String description;
+    private String vegetableDescription;
 
     @Column(name = "PRICE")
     private Float price;
@@ -27,20 +27,20 @@ public class VegetablePO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getVegetableName() {
+        return vegetableName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVegetableName(String vegetableName) {
+        this.vegetableName = vegetableName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getVegetableDescription() {
+        return vegetableDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setVegetableDescription(String vegetableDescription) {
+        this.vegetableDescription = vegetableDescription;
     }
 
     public Float getPrice() {

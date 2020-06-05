@@ -16,4 +16,6 @@ public interface VegetableService {
     boolean updateVegetableDescription(VegetablePO vegetable);
 
     VegetablePO getVegetable(String vegetableName);
+
+    boolean deleteVegetable(VegetablePO vegetablePO);
 }

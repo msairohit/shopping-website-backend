@@ -44,4 +44,9 @@ public class VegetableController {
     public ResponseEntity<Boolean> updateVegetableDescription(@RequestBody VegetablePO vegetable) {
         return ResponseEntity.ok(vegetableService.updateVegetableDescription(vegetable));
     }
+
+    @PostMapping("delete")
+    public ResponseEntity<Boolean> deleteVegetable(@RequestBody VegetablePO vegetablePO) {
+        return ResponseEntity.ok(vegetableService.deleteVegetable(vegetablePO));
+    }
 }

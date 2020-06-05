@@ -27,8 +27,8 @@ public class VegetableServiceImpl implements VegetableService {
 
     @Override
     public boolean updateVegetable(VegetablePO vegetable) {
-        VegetablePO vegetablePO = vegetableRepository.findByName(vegetable.getName());
-        vegetablePO.setDescription(vegetable.getDescription());
+        VegetablePO vegetablePO = vegetableRepository.findByVegetableName(vegetable.getVegetableName());
+        vegetablePO.setVegetableDescription(vegetable.getVegetableDescription());
         vegetablePO.setPrice(vegetable.getPrice());
         vegetableRepository.save(vegetablePO);
         return true;
@@ -36,7 +36,7 @@ public class VegetableServiceImpl implements VegetableService {
 
     @Override
     public boolean updateVegetablePrice(VegetablePO vegetable) {
-        VegetablePO vegetablePO = vegetableRepository.findByName(vegetable.getName());
+        VegetablePO vegetablePO = vegetableRepository.findByVegetableName(vegetable.getVegetableName());
         vegetablePO.setPrice(vegetable.getPrice());
         vegetableRepository.save(vegetablePO);
         return true;
@@ -44,14 +44,21 @@ public class VegetableServiceImpl implements VegetableService {
 
     @Override
     public boolean updateVegetableDescription(VegetablePO vegetable) {
-        VegetablePO vegetablePO = vegetableRepository.findByName(vegetable.getName());
-        vegetablePO.setDescription(vegetable.getDescription());
+        VegetablePO vegetablePO = vegetableRepository.findByVegetableName(vegetable.getVegetableName());
+        vegetablePO.setVegetableDescription(vegetable.getVegetableDescription());
         vegetableRepository.save(vegetablePO);
         return true;
     }
 
     @Override
     public VegetablePO getVegetable(String vegetableName) {
-        return vegetableRepository.findByName(vegetableName);
+        return vegetableRepository.findByVegetableName(vegetableName);
+    }
+
+    @Override
+    public boolean deleteVegetable(VegetablePO vegetablePO) {
+        VegetablePO toDelete = vegetableRepository.findByVegetableName(vegetablePO.getVegetableName());
+        vegetableRepository.delete(toDelete);
+        return true;
     }
 }

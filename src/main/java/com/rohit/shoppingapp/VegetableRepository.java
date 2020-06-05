@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VegetableRepository extends JpaRepository<VegetablePO, Integer> {
-    VegetablePO findByName(String name);
+    VegetablePO findByVegetableName(String name);
 }

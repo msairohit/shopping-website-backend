@@ -1,4 +1,4 @@
-package com.rohit.shoppingapp;
+package com.rohit.shoppingapp.repository;
 
 import com.rohit.shoppingapp.entity.VegetablePO;
 import org.springframework.data.jpa.repository.JpaRepository;

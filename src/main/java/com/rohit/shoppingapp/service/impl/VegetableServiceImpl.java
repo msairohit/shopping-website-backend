@@ -1,6 +1,6 @@
 package com.rohit.shoppingapp.service.impl;
 
-import com.rohit.shoppingapp.VegetableRepository;
+import com.rohit.shoppingapp.repository.VegetableRepository;
 import com.rohit.shoppingapp.entity.VegetablePO;
 import com.rohit.shoppingapp.service.VegetableService;
 import org.springframework.beans.factory.annotation.Autowired;

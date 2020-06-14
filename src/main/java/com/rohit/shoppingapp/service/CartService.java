@@ -9,7 +9,9 @@ public interface CartService {
 
     Cart addToCart(Cart cart);
 
-    Boolean updateCart(Cart cart);
+    Cart updateCart(Cart cart);
 
     Float checkout(String customerName);
+
+    Boolean deleteItem(String productName);
 }

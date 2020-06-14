@@ -4,14 +4,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "vegetable")
-public class VegetablePO {
+public class Vegetable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "NAME", unique = true, nullable = false)
-    private String vegetableName;
+    private String name;
 
     @Column(name = "DESCRIPTION")
     private String vegetableDescription;
@@ -27,12 +27,12 @@ public class VegetablePO {
         this.id = id;
     }
 
-    public String getVegetableName() {
-        return vegetableName;
+    public String getName() {
+        return name;
     }
 
-    public void setVegetableName(String vegetableName) {
-        this.vegetableName = vegetableName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getVegetableDescription() {

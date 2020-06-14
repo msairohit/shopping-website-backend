@@ -1,7 +1,7 @@
 package com.rohit.shoppingapp.service.impl;
 
 import com.rohit.shoppingapp.repository.VegetableRepository;
-import com.rohit.shoppingapp.entity.VegetablePO;
+import com.rohit.shoppingapp.entity.Vegetable;
 import com.rohit.shoppingapp.service.VegetableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,19 +15,19 @@ public class VegetableServiceImpl implements VegetableService {
     private VegetableRepository vegetableRepository;
 
     @Override
-    public List<VegetablePO> getAllVegetables() {
+    public List<Vegetable> getAllVegetables() {
         return vegetableRepository.findAll();
     }
 
     @Override
-    public boolean addVegetable(VegetablePO vegetable) {
+    public boolean addVegetable(Vegetable vegetable) {
         vegetableRepository.save(vegetable);
         return true;
     }
 
     @Override
-    public boolean updateVegetable(VegetablePO vegetable) {
-        VegetablePO vegetablePO = vegetableRepository.findByVegetableName(vegetable.getVegetableName());
+    public boolean updateVegetable(Vegetable vegetable) {
+        Vegetable vegetablePO = vegetableRepository.findByName(vegetable.getName());
         vegetablePO.setVegetableDescription(vegetable.getVegetableDescription());
         vegetablePO.setPrice(vegetable.getPrice());
         vegetableRepository.save(vegetablePO);
@@ -35,29 +35,29 @@ public class VegetableServiceImpl implements VegetableService {
     }
 
     @Override
-    public boolean updateVegetablePrice(VegetablePO vegetable) {
-        VegetablePO vegetablePO = vegetableRepository.findByVegetableName(vegetable.getVegetableName());
+    public boolean updateVegetablePrice(Vegetable vegetable) {
+        Vegetable vegetablePO = vegetableRepository.findByName(vegetable.getName());
         vegetablePO.setPrice(vegetable.getPrice());
         vegetableRepository.save(vegetablePO);
         return true;
     }
 
     @Override
-    public boolean updateVegetableDescription(VegetablePO vegetable) {
-        VegetablePO vegetablePO = vegetableRepository.findByVegetableName(vegetable.getVegetableName());
+    public boolean updateVegetableDescription(Vegetable vegetable) {
+        Vegetable vegetablePO = vegetableRepository.findByName(vegetable.getName());
         vegetablePO.setVegetableDescription(vegetable.getVegetableDescription());
         vegetableRepository.save(vegetablePO);
         return true;
     }
 
     @Override
-    public VegetablePO getVegetable(String vegetableName) {
-        return vegetableRepository.findByVegetableName(vegetableName);
+    public Vegetable getVegetable(String vegetableName) {
+        return vegetableRepository.findByName(vegetableName);
     }
 
     @Override
-    public boolean deleteVegetable(VegetablePO vegetablePO) {
-        VegetablePO toDelete = vegetableRepository.findByVegetableName(vegetablePO.getVegetableName());
+    public boolean deleteVegetable(Vegetable vegetable) {
+        Vegetable toDelete = vegetableRepository.findByName(vegetable.getName());
         vegetableRepository.delete(toDelete);
         return true;
     }

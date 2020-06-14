@@ -1,7 +1,5 @@
 package com.rohit.shoppingapp.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +14,7 @@ public class Cart {
     private String customerName;
 
     @Column(name = "PRODUCT_NAME", unique = true)
-    private String productName;
+    private String name;
 
     @Column(name = "COST_OF_EACH_ITEM", nullable = false)
     private Float costOfEachItem;
@@ -47,12 +45,12 @@ public class Cart {
         this.customerName = customerName;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Float getCostOfEachItem() {

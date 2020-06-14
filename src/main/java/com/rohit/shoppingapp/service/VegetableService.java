@@ -1,21 +1,21 @@
 package com.rohit.shoppingapp.service;
 
-import com.rohit.shoppingapp.entity.VegetablePO;
+import com.rohit.shoppingapp.entity.Vegetable;
 
 import java.util.List;
 
 public interface VegetableService {
-    List<VegetablePO> getAllVegetables();
+    List<Vegetable> getAllVegetables();
 
-    boolean addVegetable(VegetablePO vegetable);
+    boolean addVegetable(Vegetable vegetable);
 
-    boolean updateVegetable(VegetablePO vegetable);
+    boolean updateVegetable(Vegetable vegetable);
 
-    boolean updateVegetablePrice(VegetablePO vegetable);
+    boolean updateVegetablePrice(Vegetable vegetable);
 
-    boolean updateVegetableDescription(VegetablePO vegetable);
+    boolean updateVegetableDescription(Vegetable vegetable);
 
-    VegetablePO getVegetable(String vegetableName);
+    Vegetable getVegetable(String vegetableName);
 
-    boolean deleteVegetable(VegetablePO vegetablePO);
+    boolean deleteVegetable(Vegetable vegetable);
 }

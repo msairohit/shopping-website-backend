@@ -26,12 +26,17 @@ public class CartController {
     }
 
     @PutMapping
-    public ResponseEntity<Boolean> updateCart(@RequestBody Cart cart) {
+    public ResponseEntity<Cart> updateCart(@RequestBody Cart cart) {
         return ResponseEntity.ok(cartService.updateCart(cart));
     }
 
     @GetMapping("/{customerName}/totalCost")
     public ResponseEntity<Float> updateCart(@PathVariable String customerName) {
         return ResponseEntity.ok(cartService.checkout(customerName));
+    }
+
+    @DeleteMapping("/{productName}")
+    public ResponseEntity<Boolean> deleteItem(@PathVariable String productName) {
+        return ResponseEntity.ok(cartService.deleteItem(productName));
     }
 }

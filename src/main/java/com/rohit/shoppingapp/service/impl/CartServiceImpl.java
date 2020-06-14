@@ -28,22 +28,31 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Boolean updateCart(Cart cart) {
+    public Cart updateCart(Cart cart) {
+        Cart returnValue;
         List<Cart> byCustomerName = cartRepository.findByCustomerName(cart.getCustomerName());
         Optional<Cart> first = byCustomerName.stream()
-                .filter(existingCartItem -> existingCartItem.getProductName().equals(cart.getProductName()))
+                .filter(existingCartItem -> existingCartItem.getName().equals(cart.getName()))
                 .findAny();
         if (first.isPresent()) {
             first.get().setQuantity(cart.getQuantity());
             first.get().updateTotalCost();
-            cartRepository.save(first.get());
-        } else addToCart(cart);
-        return true;
+            returnValue = cartRepository.save(first.get());
+        } else {
+            returnValue = addToCart(cart);
+        }
+        return returnValue;
     }
 
     @Override
     public Float checkout(String customerName) {
         List<Cart> byCustomerName = cartRepository.findByCustomerName(customerName);
         return byCustomerName.stream().map(Cart::getTotalCost).reduce((float) 0, Float::sum);
+    }
+
+    @Override
+    public Boolean deleteItem(String productName) {
+        cartRepository.delete(cartRepository.findByName(productName));
+        return true;
     }
 }

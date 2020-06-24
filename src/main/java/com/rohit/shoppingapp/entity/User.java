@@ -3,7 +3,7 @@ package com.rohit.shoppingapp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "APP_USER")
 public class User {
 
     @Id

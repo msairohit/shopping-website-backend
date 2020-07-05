@@ -18,6 +18,50 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>sql</id>
+			<properties>
+				<url>jdbc:mysql://localhost:3306/shopping</url>
+				<username>root</username>
+				<password>root</password>
+				<ddlAuto>update</ddlAuto>
+				<dialect>org.hibernate.dialect.MySQL5Dialect</dialect>
+				<spring.profiles.active>sql</spring.profiles.active>
+				<show.sql>true</show.sql>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>postgre</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<url>jdbc:postgresql://localhost:5432/postgres</url>
+				<username>postgres</username>
+				<password>root</password>
+				<ddlAuto>update</ddlAuto>
+				<dialect>org.hibernate.dialect.PostgreSQL82Dialect</dialect>
+				<spring.profiles.active>postgre</spring.profiles.active>
+				<show.sql>true</show.sql>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>heroku</id>
+			<properties>
+				<url>jdbc:postgresql://ec2-34-230-231-71.compute-1.amazonaws.com:5432/d4aksa6otbtion</url>
+				<username>kzuenxtaswameb</username>
+				<password>c023fe7b51a7e886d4c7092ae78b135f91751bc3d1518d75f6c0325fdd936605</password>
+				<ddlAuto>update</ddlAuto>
+				<dialect>org.hibernate.dialect.PostgreSQL82Dialect</dialect>
+				<spring.profiles.active>heroku</spring.profiles.active>
+				<show.sql>true</show.sql>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,6 +111,13 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 
 </project>

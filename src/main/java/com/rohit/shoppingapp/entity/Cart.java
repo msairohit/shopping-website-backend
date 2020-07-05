@@ -3,17 +3,18 @@ package com.rohit.shoppingapp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CART")
+@Table(name = "CART", uniqueConstraints =
+@UniqueConstraint(columnNames = {"CUSTOMER_NAME", "PRODUCT_NAME"}))
 public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "CUSTOMER_NAME", nullable = false, unique = true)
+    @Column(name = "CUSTOMER_NAME", nullable = false)
     private String customerName;
 
-    @Column(name = "PRODUCT_NAME", unique = true)
+    @Column(name = "PRODUCT_NAME")
     private String name;
 
     @Column(name = "COST_OF_EACH_ITEM", nullable = false)
